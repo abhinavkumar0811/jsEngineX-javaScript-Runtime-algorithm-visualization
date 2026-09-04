@@ -6,6 +6,7 @@ import MonacoEditorWrapper from '../ide/MonacoEditor.jsx';
 import ConsolePanel from '../ide/ConsolePanel.jsx';
 import JSInternalsTab from '../js-internals/JSInternalsTab.jsx';
 import DSAVisualizerTab from '../dsa/DSAVisualizerTab.jsx';
+import ComplexityTab from '../complexity/ComplexityTab.jsx';
 import { Layers, Activity, GitBranch } from 'lucide-react';
 
 export default function IDELayout() {
@@ -62,12 +63,7 @@ export default function IDELayout() {
               <div className="visualizer-stage-wrapper">
                 {activeMainTab === 'js-internals' && <JSInternalsTab />}
                 {activeMainTab === 'dsa' && <DSAVisualizerTab />}
-                {activeMainTab === 'complexity' && (
-                  <div className="stage-placeholder">
-                    <h4><Activity size={18} /> Time & Space Complexity Engine</h4>
-                    <p>Phase 5 Recharts Big-O growth curves and KaTeX mathematical proofs will render here.</p>
-                  </div>
-                )}
+                {activeMainTab === 'complexity' && <ComplexityTab />}
               </div>
             </div>
           </Panel>
