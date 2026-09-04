@@ -1,7 +1,8 @@
 import React from 'react';
 import { useTrace } from '../../context/TraceContext.jsx';
 import { ALGORITHM_PRESETS } from '../../constants/algorithmPresets.js';
-import { Cpu, PlayCircle, CheckCircle2, AlertTriangle, RefreshCw } from 'lucide-react';
+import JSEngineXLogo from '../common/JSEngineXLogo.jsx';
+import { PlayCircle, CheckCircle2, AlertTriangle, RefreshCw } from 'lucide-react';
 
 export default function Header() {
   const { activePresetId, loadPreset, isEvaluating, isPlaying, traceError, traceSteps, currentStepIdx } = useTrace();
@@ -41,19 +42,21 @@ export default function Header() {
   return (
     <header className="app-header glass-panel">
       <div className="header-brand">
-        <div className="brand-icon">
-          <Cpu size={22} color="var(--accent-primary)" />
+        <div className="brand-logo-wrapper">
+          <JSEngineXLogo size={42} />
         </div>
         <div className="brand-text">
-          <h2>CS Execution Platform</h2>
-          <span className="brand-subtitle">JS Internals & AST Visualization</span>
+          <h2>
+            JSEngine<span className="brand-x">X</span>
+          </h2>
+          <span className="brand-subtitle">JavaScript Runtime & Algorithm Visualization</span>
         </div>
       </div>
 
       <div className="header-actions">
         {/* Preset Selector */}
         <div className="preset-selector-container">
-          <label htmlFor="preset-select">Code Preset:</label>
+          <label htmlFor="preset-select">Algorithm Preset:</label>
           <select
             id="preset-select"
             value={activePresetId}
