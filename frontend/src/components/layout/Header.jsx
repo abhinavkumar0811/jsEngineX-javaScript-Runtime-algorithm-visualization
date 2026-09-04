@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useTrace, DEVELOPER_THEMES } from '../../context/TraceContext.jsx';
 import { ALGORITHM_PRESETS } from '../../constants/algorithmPresets.js';
 import JSEngineXLogo from '../common/JSEngineXLogo.jsx';
-import { PlayCircle, CheckCircle2, AlertTriangle, RefreshCw, Palette } from 'lucide-react';
+import { PlayCircle, CheckCircle2, AlertTriangle, RefreshCw, Palette, Share2, Copy } from 'lucide-react';
 
 export default function Header() {
   const {
+    code,
     activePresetId,
     loadPreset,
     theme,
@@ -14,8 +15,46 @@ export default function Header() {
     isPlaying,
     traceError,
     traceSteps,
-    currentStepIdx
+    currentStepIdx,
+    setCode
   } = useTrace();
+
+  const [isSharing, setIsSharing] = useState(false);
+  const [copiedLink, setCopiedLink] = useState(false);
+
+  const handleShareSnippet = async () => {
+    setIsSharing(true);
+    setCopiedLink(false);
+    try {
+      const response = await fetch('http://localhost:5000/api/v1/snippets', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          code,
+          title: 'Shared JS Trace Snippet',
+          category: 'Community'
+        })
+      });
+
+      const data = await response.json();
+      if (data.success && data.data?.shareId) {
+        const shareUrl = `${window.location.origin}/?snippet=${data.data.shareId}`;
+        await navigator.clipboard.writeText(shareUrl);
+        setCopiedLink(true);
+        setTimeout(() => setCopiedLink(false), 3000);
+      }
+    } catch (err) {
+      console.warn('Backend API share fallback:', err);
+      // Fallback local share URL using base64 encoding if backend offline
+      const encoded = btoa(encodeURIComponent(code));
+      const shareUrl = `${window.location.origin}/?code=${encoded}`;
+      await navigator.clipboard.writeText(shareUrl);
+      setCopiedLink(true);
+      setTimeout(() => setCopiedLink(false), 3000);
+    } finally {
+      setIsSharing(false);
+    }
+  };
 
   const getStatusBadge = () => {
     if (isEvaluating) {
@@ -81,7 +120,7 @@ export default function Header() {
           </select>
         </div>
 
-        {/* 5 Coder Themes Switcher */}
+        {/* 6 Developer Themes Switcher */}
         <div className="theme-selector-container">
           <Palette size={15} color="var(--accent-primary)" />
           <select
@@ -97,6 +136,37 @@ export default function Header() {
             ))}
           </select>
         </div>
+
+        {/* Share Snippet Button */}
+        <button
+          onClick={handleShareSnippet}
+          disabled={isSharing}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '6px',
+            padding: '6px 14px',
+            borderRadius: '8px',
+            border: '1px solid var(--border-color)',
+            background: copiedLink ? 'rgba(16, 185, 129, 0.2)' : 'var(--bg-glass)',
+            color: copiedLink ? 'var(--accent-green)' : 'var(--text-primary)',
+            fontSize: '0.8rem',
+            fontWeight: 600,
+            cursor: 'pointer',
+            transition: 'all 0.2s ease'
+          }}
+          title="Share code snippet & copy link"
+        >
+          {copiedLink ? (
+            <>
+              <CheckCircle2 size={14} color="var(--accent-green)" /> Link Copied!
+            </>
+          ) : (
+            <>
+              <Share2 size={14} color="var(--accent-cyan)" /> Share
+            </>
+          )}
+        </button>
 
         {/* Status Indicator */}
         {getStatusBadge()}

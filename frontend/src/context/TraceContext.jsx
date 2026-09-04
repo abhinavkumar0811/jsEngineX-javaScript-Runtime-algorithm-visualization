@@ -57,9 +57,35 @@ export function TraceProvider({ children }) {
     }
   };
 
-  // Run initial trace on mount
+  // Run initial trace on mount & check URL share parameters
   useEffect(() => {
-    runCodeTrace(code);
+    const params = new URLSearchParams(window.location.search);
+    const snippetId = params.get('snippet');
+    const encodedCode = params.get('code');
+
+    if (snippetId) {
+      fetch(`http://localhost:5000/api/v1/snippets/${snippetId}`)
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.success && data.data?.code) {
+            setCode(data.data.code);
+            runCodeTrace(data.data.code);
+          } else {
+            runCodeTrace(code);
+          }
+        })
+        .catch(() => runCodeTrace(code));
+    } else if (encodedCode) {
+      try {
+        const decoded = decodeURIComponent(atob(encodedCode));
+        setCode(decoded);
+        runCodeTrace(decoded);
+      } catch (e) {
+        runCodeTrace(code);
+      }
+    } else {
+      runCodeTrace(code);
+    }
   }, []);
 
   // Playback timer tick loop

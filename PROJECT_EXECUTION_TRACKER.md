@@ -246,6 +246,33 @@ For every new feature, refactoring, or phase completion, a log entry must be app
 
 ---
 
+### [Timestamp: 2026-09-05 01:52:00 IST] STEP-12: Phase 6 Backend API & Code Snippet Sharing Service
+* **What Was Implemented**:
+  * Configured Express backend architecture (`backend/src/`) with MongoDB Mongoose connection (`db.js`) and standalone local fallback store.
+  * Built Mongoose schemas `Snippet.js` (shareId token, code, views, category) and `Preset.js` (algorithm presets, complexity ratings).
+  * Built `snippetController.js` supporting unique 8-character hash share token generation, snippet creation, view counting, and recent public snippet retrieval.
+  * Built `presetController.js` returning algorithm presets (Bubble Sort, Binary Search, Factorial Recursion, Event Loop Async).
+  * Built Express rate-limiting middleware (`rateLimiter.js`) and centralized error handler (`errorHandler.js`).
+  * Mounted API routes `/api/v1/snippets` and `/api/v1/presets` in `backend/index.js` and verified clean boot (`http://localhost:5000`).
+  * Updated frontend `Header.jsx` with **Share Snippet** button, clipboard link copying, and `TraceContext.jsx` query parameter auto-loading (`?snippet=shareId` / `?code=base64`).
+* **Techniques & Libraries Used**: Express REST API, Mongoose ORM, Crypto Hash Tokens, Express Rate Limiter, Helmet Security, Clipboard API, Query Parameter Parsing.
+* **Files Modified / Created**:
+  * [backend/src/config/db.js](file:///c:/Users/abhin/OneDrive/Desktop/nodejs%20visulization/backend/src/config/db.js)
+  * [backend/src/models/Snippet.js](file:///c:/Users/abhin/OneDrive/Desktop/nodejs%20visulization/backend/src/models/Snippet.js)
+  * [backend/src/models/Preset.js](file:///c:/Users/abhin/OneDrive/Desktop/nodejs%20visulization/backend/src/models/Preset.js)
+  * [backend/src/controllers/snippetController.js](file:///c:/Users/abhin/OneDrive/Desktop/nodejs%20visulization/backend/src/controllers/snippetController.js)
+  * [backend/src/controllers/presetController.js](file:///c:/Users/abhin/OneDrive/Desktop/nodejs%20visulization/backend/src/controllers/presetController.js)
+  * [backend/src/middlewares/rateLimiter.js](file:///c:/Users/abhin/OneDrive/Desktop/nodejs%20visulization/backend/src/middlewares/rateLimiter.js)
+  * [backend/src/middlewares/errorHandler.js](file:///c:/Users/abhin/OneDrive/Desktop/nodejs%20visulization/backend/src/middlewares/errorHandler.js)
+  * [backend/src/routes/snippetRoutes.js](file:///c:/Users/abhin/OneDrive/Desktop/nodejs%20visulization/backend/src/routes/snippetRoutes.js)
+  * [backend/src/routes/presetRoutes.js](file:///c:/Users/abhin/OneDrive/Desktop/nodejs%20visulization/backend/src/routes/presetRoutes.js)
+  * [backend/index.js](file:///c:/Users/abhin/OneDrive/Desktop/nodejs%20visulization/backend/index.js)
+  * [frontend/src/components/layout/Header.jsx](file:///c:/Users/abhin/OneDrive/Desktop/nodejs%20visulization/frontend/src/components/layout/Header.jsx)
+  * [frontend/src/context/TraceContext.jsx](file:///c:/Users/abhin/OneDrive/Desktop/nodejs%20visulization/frontend/src/context/TraceContext.jsx)
+* **Verification Result**: Backend booted cleanly; `npm run build` compiled 2,780 modules in 9.06s with 0 errors.
+
+---
+
 ## 🚀 Future Implementation Roadmap & Execution Plan
 
 Below is the step-by-step breakdown of how upcoming phases will be built, detailing target components, techniques, and verification strategies.
@@ -329,7 +356,7 @@ Below is the step-by-step breakdown of how upcoming phases will be built, detail
 | **Step 9** | `.gitignore` Comprehensive Configuration | ✅ **Completed** | 2026-09-05 |
 | **Step 10** | Main Industry-Standard README.md | ✅ **Completed** | 2026-09-05 |
 | **Phase 5** | Time & Space Complexity Engine (Recharts + KaTeX) | ✅ **Completed** | 2026-09-05 |
-| **Phase 6** | Backend Presets & Code Snippet Sharing API | ⏳ *Pending* | Upcoming |
+| **Phase 6** | Backend Presets & Code Snippet Sharing API | ✅ **Completed** | 2026-09-05 |
 
 ---
 
