@@ -7,7 +7,8 @@ export const DEVELOPER_THEMES = [
   { id: 'dracula', name: 'Dracula (Gothic Dark)', color: '#bd93f9' },
   { id: 'one-dark', name: 'One Dark Pro (Atom)', color: '#61afef' },
   { id: 'github-dark', name: 'GitHub Dark (Official)', color: '#58a6ff' },
-  { id: 'synthwave', name: 'SynthWave \'84 (Retro Glow)', color: '#ff7edb' }
+  { id: 'synthwave', name: 'SynthWave \'84 (Retro Glow)', color: '#ff7edb' },
+  { id: 'github-light', name: 'GitHub Light (Clean White)', color: '#0969da' }
 ];
 
 const TraceContext = createContext();

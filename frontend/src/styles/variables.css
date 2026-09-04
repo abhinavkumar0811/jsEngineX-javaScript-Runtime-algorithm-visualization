@@ -1,4 +1,4 @@
-/* JSEngineX - 5 Developer Themes Design Tokens */
+/* JSEngineX - Developer Themes Design Tokens */
 
 /* 1. Tokyo Night (Default - Modern Japanese Cyberpunk) */
 :root,
@@ -111,6 +111,28 @@
   --text-muted: #614d69;
 }
 
+/* 6. GitHub Light (Official Clean White Theme) */
+[data-theme="github-light"] {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f6f8fa;
+  --bg-tertiary: #eaeef2;
+  --bg-glass: rgba(246, 248, 250, 0.88);
+
+  --border-color: #d0d7de;
+  --border-color-active: #0969da;
+
+  --accent-primary: #0969da;   /* GitHub Light Blue */
+  --accent-secondary: #8250df; /* GitHub Light Purple */
+  --accent-cyan: #057689;      /* Teal Cyan */
+  --accent-emerald: #1a7f37;   /* GitHub Light Green */
+  --accent-amber: #9a6700;     /* Amber Gold */
+  --accent-rose: #cf222e;      /* GitHub Light Red */
+
+  --text-primary: #1f2328;
+  --text-secondary: #57606a;
+  --text-muted: #8c959f;
+}
+
 /* Common Layout Specs & Glassmorphism */
 :root {
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
@@ -118,7 +140,7 @@
   --font-code: 'Fira Code', monospace;
 
   --glass-blur: blur(16px);
-  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.12);
   --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 16px;
@@ -126,7 +148,7 @@
 
 * { box-sizing: border-box; }
 
-body.dark-theme {
+body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
   font-family: var(--font-sans);
@@ -329,7 +351,7 @@ body.dark-theme {
 .btn:disabled { opacity: 0.4; cursor: not-allowed; }
 .btn-primary { background: var(--accent-primary); color: #fff; border: none; }
 .btn-primary:hover:not(:disabled) { opacity: 0.9; }
-.btn-accent { background: var(--accent-cyan); color: #000; border: none; }
+.btn-accent { background: var(--accent-cyan); color: #fff; border: none; }
 .btn-accent:hover:not(:disabled) { opacity: 0.9; }
 .btn-icon { padding: 6px; }
 
