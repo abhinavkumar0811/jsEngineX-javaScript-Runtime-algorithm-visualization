@@ -160,6 +160,7 @@ For every new feature, refactoring, or phase completion, a log entry must be app
   * [frontend/src/context/TraceContext.jsx](file:///c:/Users/abhin/OneDrive/Desktop/nodejs%20visulization/frontend/src/context/TraceContext.jsx)
   * [frontend/src/components/layout/Header.jsx](file:///c:/Users/abhin/OneDrive/Desktop/nodejs%20visulization/frontend/src/components/layout/Header.jsx)
   * [frontend/src/components/ide/MonacoEditor.jsx](file:///c:/Users/abhin/OneDrive/Desktop/nodejs%20visulization/frontend/src/components/ide/MonacoEditor.jsx)
+* **Git Commit Hash**: `a0be4d5` ("feat: add 5 coder favorite IDE themes (Tokyo Night, Dracula, One Dark Pro, GitHub Dark, SynthWave '84) and dynamic theme switcher")
 * **Verification Result**: `vite build` compiled 2180 modules cleanly in 4.69s; verified live switching across all 5 coder themes.
 
 ---
