@@ -142,6 +142,28 @@ For every new feature, refactoring, or phase completion, a log entry must be app
 
 ---
 
+### [Timestamp: 2026-09-05 01:17:00 IST] STEP-06: 5 Developer IDE Themes & Live Theme Switcher
+* **What Was Implemented**:
+  * Implemented 5 developer-favorite theme palettes:
+    1. **Tokyo Night** (`tokyo-night` — Modern Japanese Cyberpunk - Default)
+    2. **Dracula** (`dracula` — High-Contrast Gothic Dark)
+    3. **One Dark Pro** (`one-dark` — Atom / VS Code Developer Favorite)
+    4. **GitHub Dark** (`github-dark` — Official GitHub Dark Interface)
+    5. **SynthWave '84** (`synthwave` — Retro 80s Cyber Glow)
+  * Defined CSS root attribute selectors (`[data-theme="..."]`) for seamless design system palette switching.
+  * Added theme state, `localStorage` persistence, and `changeTheme` handler in `TraceContext.jsx`.
+  * Added Theme Selector dropdown with `<Palette size={15} />` in `Header.jsx`.
+  * Synchronized Monaco Code Editor themes (`MonacoEditor.jsx`) dynamically with the selected developer palette.
+* **Techniques & Libraries Used**: CSS Data-Attribute Theme Switching, Monaco Theme Definition API (`monaco.editor.defineTheme`), React Context State Persistence (`localStorage`).
+* **Files Modified / Created**:
+  * [frontend/src/styles/variables.css](file:///c:/Users/abhin/OneDrive/Desktop/nodejs%20visulization/frontend/src/styles/variables.css)
+  * [frontend/src/context/TraceContext.jsx](file:///c:/Users/abhin/OneDrive/Desktop/nodejs%20visulization/frontend/src/context/TraceContext.jsx)
+  * [frontend/src/components/layout/Header.jsx](file:///c:/Users/abhin/OneDrive/Desktop/nodejs%20visulization/frontend/src/components/layout/Header.jsx)
+  * [frontend/src/components/ide/MonacoEditor.jsx](file:///c:/Users/abhin/OneDrive/Desktop/nodejs%20visulization/frontend/src/components/ide/MonacoEditor.jsx)
+* **Verification Result**: `vite build` compiled 2180 modules cleanly in 4.69s; verified live switching across all 5 coder themes.
+
+---
+
 ## 🚀 Future Implementation Roadmap & Execution Plan
 
 Below is the step-by-step breakdown of how upcoming phases will be built, detailing target components, techniques, and verification strategies.

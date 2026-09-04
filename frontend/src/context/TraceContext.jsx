@@ -2,6 +2,14 @@ import React, { createContext, useContext, useState, useEffect, useRef } from 'r
 import { runTrace } from '../engine/traceEngine.js';
 import { ALGORITHM_PRESETS } from '../constants/algorithmPresets.js';
 
+export const DEVELOPER_THEMES = [
+  { id: 'tokyo-night', name: 'Tokyo Night (Cyberpunk)', color: '#7dcfff' },
+  { id: 'dracula', name: 'Dracula (Gothic Dark)', color: '#bd93f9' },
+  { id: 'one-dark', name: 'One Dark Pro (Atom)', color: '#61afef' },
+  { id: 'github-dark', name: 'GitHub Dark (Official)', color: '#58a6ff' },
+  { id: 'synthwave', name: 'SynthWave \'84 (Retro Glow)', color: '#ff7edb' }
+];
+
 const TraceContext = createContext();
 
 export function TraceProvider({ children }) {
@@ -13,6 +21,21 @@ export function TraceProvider({ children }) {
   const [playbackSpeed, setPlaybackSpeed] = useState(1); // 1x default
   const [isEvaluating, setIsEvaluating] = useState(false);
   const [traceError, setTraceError] = useState(null);
+
+  // Theme State (Tokyo Night default)
+  const [theme, setThemeState] = useState(() => {
+    return localStorage.getItem('jsenginex_theme') || 'tokyo-night';
+  });
+
+  const changeTheme = (newThemeId) => {
+    setThemeState(newThemeId);
+    localStorage.setItem('jsenginex_theme', newThemeId);
+    document.body.setAttribute('data-theme', newThemeId);
+  };
+
+  useEffect(() => {
+    document.body.setAttribute('data-theme', theme);
+  }, [theme]);
 
   const timerRef = useRef(null);
 
@@ -104,6 +127,8 @@ export function TraceProvider({ children }) {
         setCode,
         activePresetId,
         loadPreset,
+        theme,
+        changeTheme,
         traceSteps,
         currentStepIdx,
         activeStep,

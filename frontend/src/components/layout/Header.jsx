@@ -1,11 +1,21 @@
 import React from 'react';
-import { useTrace } from '../../context/TraceContext.jsx';
+import { useTrace, DEVELOPER_THEMES } from '../../context/TraceContext.jsx';
 import { ALGORITHM_PRESETS } from '../../constants/algorithmPresets.js';
 import JSEngineXLogo from '../common/JSEngineXLogo.jsx';
-import { PlayCircle, CheckCircle2, AlertTriangle, RefreshCw } from 'lucide-react';
+import { PlayCircle, CheckCircle2, AlertTriangle, RefreshCw, Palette } from 'lucide-react';
 
 export default function Header() {
-  const { activePresetId, loadPreset, isEvaluating, isPlaying, traceError, traceSteps, currentStepIdx } = useTrace();
+  const {
+    activePresetId,
+    loadPreset,
+    theme,
+    changeTheme,
+    isEvaluating,
+    isPlaying,
+    traceError,
+    traceSteps,
+    currentStepIdx
+  } = useTrace();
 
   const getStatusBadge = () => {
     if (isEvaluating) {
@@ -56,7 +66,7 @@ export default function Header() {
       <div className="header-actions">
         {/* Preset Selector */}
         <div className="preset-selector-container">
-          <label htmlFor="preset-select">Algorithm Preset:</label>
+          <label htmlFor="preset-select">Preset:</label>
           <select
             id="preset-select"
             value={activePresetId}
@@ -66,6 +76,23 @@ export default function Header() {
             {ALGORITHM_PRESETS.map((preset) => (
               <option key={preset.id} value={preset.id}>
                 {preset.category} — {preset.name}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        {/* 5 Coder Themes Switcher */}
+        <div className="theme-selector-container">
+          <Palette size={15} color="var(--accent-primary)" />
+          <select
+            value={theme}
+            onChange={(e) => changeTheme(e.target.value)}
+            className="theme-dropdown"
+            title="Switch Developer IDE Theme"
+          >
+            {DEVELOPER_THEMES.map((t) => (
+              <option key={t.id} value={t.id}>
+                {t.name}
               </option>
             ))}
           </select>

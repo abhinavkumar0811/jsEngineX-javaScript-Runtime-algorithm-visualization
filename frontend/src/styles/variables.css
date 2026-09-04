@@ -1,33 +1,122 @@
-/* CS Execution & Visualization Platform - Design Tokens & IDE Layout Styles */
-:root {
-  /* Color Palette - Premium Dark Theme */
-  --bg-primary: #0a0d14;
-  --bg-secondary: #121824;
-  --bg-tertiary: #1a2234;
-  --bg-glass: rgba(18, 24, 36, 0.75);
+/* JSEngineX - 5 Developer Themes Design Tokens */
+
+/* 1. Tokyo Night (Default - Modern Japanese Cyberpunk) */
+:root,
+[data-theme="tokyo-night"] {
+  --bg-primary: #1a1b26;
+  --bg-secondary: #16161e;
+  --bg-tertiary: #24283b;
+  --bg-glass: rgba(22, 22, 30, 0.82);
   
   --border-color: rgba(255, 255, 255, 0.08);
-  --border-color-active: rgba(99, 102, 241, 0.5);
+  --border-color-active: rgba(125, 207, 255, 0.5);
 
-  /* Accent Colors */
-  --accent-primary: #6366f1;   /* Indigo */
-  --accent-secondary: #8b5cf6; /* Purple */
-  --accent-cyan: #06b6d4;      /* Cyan execution line */
-  --accent-emerald: #10b981;   /* Active swap / success */
-  --accent-amber: #f59e0b;     /* Warning / Comparing */
-  --accent-rose: #f43f5e;      /* Error / Unwinding stack */
+  --accent-primary: #7dcfff;   /* Neon Cyan */
+  --accent-secondary: #bb9af7; /* Purple */
+  --accent-cyan: #7dcfff;
+  --accent-emerald: #9ece6a;   /* Tokyo Green */
+  --accent-amber: #e0af68;     /* Tokyo Yellow */
+  --accent-rose: #f7768e;      /* Tokyo Pink/Red */
 
-  /* Text Colors */
-  --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --text-muted: #64748b;
+  --text-primary: #a9b1d6;
+  --text-secondary: #787c99;
+  --text-muted: #565f89;
+}
 
-  /* Fonts */
+/* 2. Dracula (High-Contrast Gothic Dark) */
+[data-theme="dracula"] {
+  --bg-primary: #282a36;
+  --bg-secondary: #21222c;
+  --bg-tertiary: #44475a;
+  --bg-glass: rgba(33, 34, 44, 0.82);
+
+  --border-color: rgba(255, 255, 255, 0.1);
+  --border-color-active: rgba(189, 147, 249, 0.6);
+
+  --accent-primary: #bd93f9;   /* Dracula Purple */
+  --accent-secondary: #ff79c6; /* Dracula Pink */
+  --accent-cyan: #8be9fd;      /* Dracula Cyan */
+  --accent-emerald: #50fa7b;   /* Dracula Green */
+  --accent-amber: #ffb86c;     /* Dracula Orange */
+  --accent-rose: #ff5555;      /* Dracula Red */
+
+  --text-primary: #f8f8f2;
+  --text-secondary: #6272a4;
+  --text-muted: #44475a;
+}
+
+/* 3. One Dark Pro (Atom / VS Code Developer Favorite) */
+[data-theme="one-dark"] {
+  --bg-primary: #282c34;
+  --bg-secondary: #21252b;
+  --bg-tertiary: #3b4048;
+  --bg-glass: rgba(33, 37, 43, 0.82);
+
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-color-active: rgba(97, 175, 239, 0.6);
+
+  --accent-primary: #61afef;   /* Atom Blue */
+  --accent-secondary: #c678dd; /* Atom Purple */
+  --accent-cyan: #56b6c2;      /* Atom Cyan */
+  --accent-emerald: #98c379;   /* Atom Green */
+  --accent-amber: #d19a66;     /* Atom Orange */
+  --accent-rose: #e06c75;      /* Atom Red */
+
+  --text-primary: #abb2bf;
+  --text-secondary: #7f848e;
+  --text-muted: #5c6370;
+}
+
+/* 4. GitHub Dark (Official GitHub Interface) */
+[data-theme="github-dark"] {
+  --bg-primary: #0d1117;
+  --bg-secondary: #161b22;
+  --bg-tertiary: #21262d;
+  --bg-glass: rgba(22, 27, 34, 0.85);
+
+  --border-color: #30363d;
+  --border-color-active: rgba(88, 166, 255, 0.6);
+
+  --accent-primary: #58a6ff;   /* GitHub Blue */
+  --accent-secondary: #bc8cff; /* GitHub Purple */
+  --accent-cyan: #39c5cf;
+  --accent-emerald: #3fb950;   /* GitHub Green */
+  --accent-amber: #d29922;     /* GitHub Gold */
+  --accent-rose: #ff7b72;      /* GitHub Coral */
+
+  --text-primary: #c9d1d9;
+  --text-secondary: #8b949e;
+  --text-muted: #484f58;
+}
+
+/* 5. SynthWave '84 (Neon Retro Glow) */
+[data-theme="synthwave"] {
+  --bg-primary: #241b2f;
+  --bg-secondary: #1a1423;
+  --bg-tertiary: #34294f;
+  --bg-glass: rgba(26, 20, 35, 0.85);
+
+  --border-color: rgba(255, 126, 219, 0.2);
+  --border-color-active: rgba(255, 126, 219, 0.7);
+
+  --accent-primary: #ff7edb;   /* Neon Pink */
+  --accent-secondary: #b066fe; /* Neon Purple */
+  --accent-cyan: #36f9f6;      /* Neon Cyan */
+  --accent-emerald: #72f1b8;   /* Neon Mint */
+  --accent-amber: #feef6d;     /* Neon Yellow */
+  --accent-rose: #fe4450;      /* Neon Red */
+
+  --text-primary: #f0e6f6;
+  --text-secondary: #8d7097;
+  --text-muted: #614d69;
+}
+
+/* Common Layout Specs & Glassmorphism */
+:root {
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   --font-heading: 'Outfit', var(--font-sans);
   --font-code: 'Fira Code', monospace;
 
-  /* Glassmorphism Specs */
   --glass-blur: blur(16px);
   --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
   --radius-sm: 6px;
@@ -46,6 +135,7 @@ body.dark-theme {
   height: 100vh;
   overflow: hidden;
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 #root { height: 100vh; width: 100vw; }
@@ -86,7 +176,7 @@ body.dark-theme {
   font-size: 1.25rem;
   font-weight: 800;
   letter-spacing: -0.5px;
-  background: linear-gradient(135deg, #fff 0%, #cbd5e1 100%);
+  background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -99,9 +189,9 @@ body.dark-theme {
 }
 
 .brand-subtitle { font-size: 0.75rem; color: var(--text-muted); }
-.header-actions { display: flex; align-items: center; gap: 16px; }
+.header-actions { display: flex; align-items: center; gap: 14px; }
 
-.preset-selector-container {
+.preset-selector-container, .theme-selector-container {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -109,15 +199,20 @@ body.dark-theme {
   color: var(--text-secondary);
 }
 
-.preset-dropdown {
+.preset-dropdown, .theme-dropdown {
   background: var(--bg-secondary);
   color: var(--text-primary);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-sm);
-  padding: 6px 12px;
+  padding: 6px 10px;
   font-size: 0.85rem;
   outline: none;
   cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.preset-dropdown:hover, .theme-dropdown:hover {
+  border-color: var(--accent-primary);
 }
 
 .status-badge {
@@ -233,9 +328,9 @@ body.dark-theme {
 .btn:hover:not(:disabled) { border-color: var(--accent-primary); background: var(--bg-tertiary); }
 .btn:disabled { opacity: 0.4; cursor: not-allowed; }
 .btn-primary { background: var(--accent-primary); color: #fff; border: none; }
-.btn-primary:hover:not(:disabled) { background: #4f46e5; }
+.btn-primary:hover:not(:disabled) { opacity: 0.9; }
 .btn-accent { background: var(--accent-cyan); color: #000; border: none; }
-.btn-accent:hover:not(:disabled) { background: #22d3ee; }
+.btn-accent:hover:not(:disabled) { opacity: 0.9; }
 .btn-icon { padding: 6px; }
 
 .timeline-scrubber-container { flex: 1; display: flex; align-items: center; gap: 12px; }
@@ -254,7 +349,7 @@ body.dark-theme {
 .visualizer-stage-wrapper { flex: 1; overflow: hidden; display: flex; flex-direction: column; }
 .stage-placeholder { padding: 40px; text-align: center; color: var(--text-secondary); }
 
-/* Phase 3 JS Internals Styling */
+/* JS Internals Styling */
 .js-internals-tab-container { display: flex; flex-direction: column; height: 100%; gap: 8px; padding: 8px; overflow: hidden; }
 .internals-subtabs { display: flex; gap: 6px; padding: 6px; }
 .subtab-btn { display: flex; align-items: center; gap: 6px; padding: 4px 10px; background: transparent; border: none; color: var(--text-secondary); font-size: 0.8rem; font-weight: 500; border-radius: var(--radius-sm); cursor: pointer; }
@@ -288,7 +383,6 @@ body.dark-theme {
 .value-json { font-family: var(--font-code); font-size: 0.75rem; color: var(--accent-emerald); margin: 0; background: var(--bg-primary); padding: 4px; border-radius: 4px; }
 .scope-empty, .stage-empty { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; gap: 8px; color: var(--text-muted); font-size: 0.85rem; }
 
-/* React Flow Stage */
 .react-flow-stage { flex: 1; height: 100%; min-height: 280px; border-radius: var(--radius-sm); overflow: hidden; }
 
 /* Event Loop Styling */
