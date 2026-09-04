@@ -96,6 +96,7 @@ For every new feature, refactoring, or phase completion, a log entry must be app
   * [frontend/src/components/layout/IDELayout.jsx](file:///c:/Users/abhin/OneDrive/Desktop/nodejs%20visulization/frontend/src/components/layout/IDELayout.jsx)
   * [frontend/src/styles/variables.css](file:///c:/Users/abhin/OneDrive/Desktop/nodejs%20visulization/frontend/src/styles/variables.css)
   * [frontend/src/App.jsx](file:///c:/Users/abhin/OneDrive/Desktop/nodejs%20visulization/frontend/src/App.jsx)
+* **Git Commit Hash**: `5cf761e` ("feat: complete Phase 2 - Monaco Editor integration, resizable multi-pane IDE layout, and step playback scrubber")
 * **Verification Result**: `vite build` compiled 1611 modules cleanly in 3.07s; all UI components verified.
 
 ---
