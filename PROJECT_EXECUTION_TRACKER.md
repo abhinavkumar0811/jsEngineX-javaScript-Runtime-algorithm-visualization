@@ -1,6 +1,6 @@
 # 🎯 Centralized Project Execution & Implementation Tracker
 
-This document serves as the **single source of truth** for tracking completed tasks, architectural milestones, implemented techniques, exact execution timestamps, and the upcoming step-by-step implementation roadmap for the **CS Execution & Visualization Platform**.
+This document serves as the **single source of truth** for tracking completed tasks, architectural milestones, implemented techniques, exact execution timestamps, and the upcoming step-by-step implementation roadmap for **JSEngineX — JavaScript Runtime & Algorithm Visualization**.
 
 ---
 
