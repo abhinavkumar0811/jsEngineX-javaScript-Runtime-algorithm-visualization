@@ -312,6 +312,19 @@ For every new feature, refactoring, or phase completion, a log entry must be app
 
 ---
 
+### [Timestamp: 2026-09-05 02:11:00 IST] STEP-15: Automated Trace Test Suite & Rollup Vendor Code-Splitting
+* **What Was Implemented**:
+  * Configured Rollup `manualChunks` vendor code-splitting in `frontend/vite.config.js` (`vendor-monaco`, `vendor-flow`, `vendor-charts`, `vendor-katex`, `vendor-motion`), eliminating chunk size warnings.
+  * Created automated Trace Engine verification test suite `frontend/src/engine/test_trace.js` validating step frame snapshots for linear loops, recursion stack unwinding, and heap objects.
+  * Verified 100% test pass rate (`node test_trace.js`).
+* **Techniques & Libraries Used**: Rollup Dynamic Manual Chunking, Automated Unit Test Runners, ES Modules.
+* **Files Modified / Created**:
+  * [frontend/vite.config.js](file:///c:/Users/abhin/OneDrive/Desktop/nodejs%20visulization/frontend/vite.config.js)
+  * [frontend/src/engine/test_trace.js](file:///c:/Users/abhin/OneDrive/Desktop/nodejs%20visulization/frontend/src/engine/test_trace.js)
+* **Verification Result**: All automated tests passed; `npm run build` compiled 6 clean vendor chunks in 22.68s with 0 chunk warnings.
+
+---
+
 ## 🚀 Future Implementation Roadmap & Execution Plan
 
 Below is the step-by-step breakdown of how upcoming phases will be built, detailing target components, techniques, and verification strategies.
@@ -398,6 +411,7 @@ Below is the step-by-step breakdown of how upcoming phases will be built, detail
 | **Phase 6** | Backend Presets & Code Snippet Sharing API | ✅ **Completed** | 2026-09-05 |
 | **Step 13** | Cloud Deployments, Keyboard Shortcuts, Export & Tour | ✅ **Completed** | 2026-09-05 |
 | **Step 14** | GC Mark-Sweep, Mutation Glow, 2D Grid & AST Inspector | ✅ **Completed** | 2026-09-05 |
+| **Step 15** | Automated Test Suite & Rollup Code-Splitting | ✅ **Completed** | 2026-09-05 |
 
 ---
 

@@ -8,7 +8,19 @@ export default defineConfig({
     open: true
   },
   build: {
-    target: 'esnext'
+    target: 'esnext',
+    chunkSizeWarningLimit: 1200,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vendor-monaco': ['@monaco-editor/react'],
+          'vendor-flow': ['@xyflow/react'],
+          'vendor-charts': ['recharts'],
+          'vendor-katex': ['katex', 'react-katex'],
+          'vendor-motion': ['framer-motion']
+        }
+      }
+    }
   },
   worker: {
     format: 'es'
