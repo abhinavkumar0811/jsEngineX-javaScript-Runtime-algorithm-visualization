@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Build outputs
+dist/
+**/dist/
+build/
+
+# Environment & local files
+.env
+.env.local
+*.log
+test_ast.js
+
+# IDE & OS
+.DS_Store
+Thumbs.db
+.vscode/
