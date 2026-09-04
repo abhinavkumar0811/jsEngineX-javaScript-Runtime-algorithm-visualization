@@ -7,7 +7,8 @@ import ConsolePanel from '../ide/ConsolePanel.jsx';
 import JSInternalsTab from '../js-internals/JSInternalsTab.jsx';
 import DSAVisualizerTab from '../dsa/DSAVisualizerTab.jsx';
 import ComplexityTab from '../complexity/ComplexityTab.jsx';
-import { Layers, Activity, GitBranch } from 'lucide-react';
+import ASTTab from '../ast/ASTTab.jsx';
+import { Layers, Activity, GitBranch, Code2 } from 'lucide-react';
 
 export default function IDELayout() {
   const [activeMainTab, setActiveMainTab] = useState('js-internals');
@@ -45,17 +46,26 @@ export default function IDELayout() {
                 >
                   <Layers size={14} /> JS Internals
                 </button>
+
                 <button
                   className={`tab-btn ${activeMainTab === 'dsa' ? 'active' : ''}`}
                   onClick={() => setActiveMainTab('dsa')}
                 >
                   <GitBranch size={14} /> DSA Visualizer
                 </button>
+
                 <button
                   className={`tab-btn ${activeMainTab === 'complexity' ? 'active' : ''}`}
                   onClick={() => setActiveMainTab('complexity')}
                 >
                   <Activity size={14} /> Big-O Complexity
+                </button>
+
+                <button
+                  className={`tab-btn ${activeMainTab === 'ast' ? 'active' : ''}`}
+                  onClick={() => setActiveMainTab('ast')}
+                >
+                  <Code2 size={14} /> AST Tree
                 </button>
               </div>
 
@@ -64,6 +74,7 @@ export default function IDELayout() {
                 {activeMainTab === 'js-internals' && <JSInternalsTab />}
                 {activeMainTab === 'dsa' && <DSAVisualizerTab />}
                 {activeMainTab === 'complexity' && <ComplexityTab />}
+                {activeMainTab === 'ast' && <ASTTab />}
               </div>
             </div>
           </Panel>

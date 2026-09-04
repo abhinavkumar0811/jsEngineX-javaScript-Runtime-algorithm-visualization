@@ -295,6 +295,23 @@ For every new feature, refactoring, or phase completion, a log entry must be app
 
 ---
 
+### [Timestamp: 2026-09-05 02:07:00 IST] STEP-14: Advanced GC Mark-and-Sweep, Scope Mutation Glow, 2D Grid Mode, and AST Inspector
+* **What Was Implemented**:
+  * **Garbage Collection (GC) Mark-and-Sweep**: Upgraded `HeapGraph.jsx` classifying memory nodes into Reachable (marked green) and Unreachable orphan candidates (marked red) with interactive **Run GC Sweep 🧹** animation and freed byte calculation.
+  * **Variable Mutation Glow Highlights**: Upgraded `ScopeChain.jsx` with real-time state diffing flashing mutated variables in neon cyan with a `⚡ Mutated` status tag.
+  * **2D Matrix Grid Visualizer**: Upgraded `ArrayViz.jsx` with a mode toggle supporting 1D animated array bar swaps and 2D Matrix traversal cell pointers `(r, c)`.
+  * **Interactive AST Tree Inspector**: Built `ASTTab.jsx` rendering Babel Abstract Syntax Tree nodes (`FunctionDeclaration`, `ForStatement`, `BinaryExpression`) synchronized with active line numbers, and mounted as a main tab in `IDELayout.jsx`.
+* **Techniques & Libraries Used**: React Flow custom node formatting, State Diffing, Babel AST Traversal (`@babel/parser`), Framer Motion Grid Animations, CSS Keyframe Glow.
+* **Files Modified / Created**:
+  * [frontend/src/components/js-internals/HeapGraph.jsx](file:///c:/Users/abhin/OneDrive/Desktop/nodejs%20visulization/frontend/src/components/js-internals/HeapGraph.jsx)
+  * [frontend/src/components/js-internals/ScopeChain.jsx](file:///c:/Users/abhin/OneDrive/Desktop/nodejs%20visulization/frontend/src/components/js-internals/ScopeChain.jsx)
+  * [frontend/src/components/dsa/ArrayViz.jsx](file:///c:/Users/abhin/OneDrive/Desktop/nodejs%20visulization/frontend/src/components/dsa/ArrayViz.jsx)
+  * [frontend/src/components/ast/ASTTab.jsx](file:///c:/Users/abhin/OneDrive/Desktop/nodejs%20visulization/frontend/src/components/ast/ASTTab.jsx)
+  * [frontend/src/components/layout/IDELayout.jsx](file:///c:/Users/abhin/OneDrive/Desktop/nodejs%20visulization/frontend/src/components/layout/IDELayout.jsx)
+* **Verification Result**: Verified `npm run build` compiled 2,787 modules cleanly in 22.58s with 0 errors.
+
+---
+
 ## 🚀 Future Implementation Roadmap & Execution Plan
 
 Below is the step-by-step breakdown of how upcoming phases will be built, detailing target components, techniques, and verification strategies.
@@ -380,6 +397,7 @@ Below is the step-by-step breakdown of how upcoming phases will be built, detail
 | **Phase 5** | Time & Space Complexity Engine (Recharts + KaTeX) | ✅ **Completed** | 2026-09-05 |
 | **Phase 6** | Backend Presets & Code Snippet Sharing API | ✅ **Completed** | 2026-09-05 |
 | **Step 13** | Cloud Deployments, Keyboard Shortcuts, Export & Tour | ✅ **Completed** | 2026-09-05 |
+| **Step 14** | GC Mark-Sweep, Mutation Glow, 2D Grid & AST Inspector | ✅ **Completed** | 2026-09-05 |
 
 ---
 
