@@ -273,6 +273,28 @@ For every new feature, refactoring, or phase completion, a log entry must be app
 
 ---
 
+### [Timestamp: 2026-09-05 01:58:00 IST] STEP-13: Deployment Configurations, Keyboard Shortcuts, Export Suite & Onboarding Tour
+* **What Was Implemented**:
+  * Configured multi-cloud deployment manifests: root `vercel.json` (Vercel static build), `frontend/public/_redirects` (Netlify SPA routing), and `backend/render.yaml` (Render Node Web Service).
+  * Implemented global developer keyboard shortcuts in `Header.jsx` (`Space`/`K` Play/Pause, `→`/`L` Step Next, `←`/`J` Step Prev, `Ctrl+Enter` Run Trace, `R` Reset, `?` Shortcuts Modal).
+  * Built `KeyboardShortcutsModal.jsx` displaying shortcut cheat sheet.
+  * Built `ExportModal.jsx` supporting 1-click downloads of raw trace JSON step snapshots (`.json`), source JS files (`.js`), and clipboard text.
+  * Built `OnboardingTourModal.jsx` interactive 5-step guided tour explaining JSEngineX features.
+  * Added Quick Sort ($O(n \log n)$ divide & conquer) and Singly Linked List pointer traversal presets in `algorithmPresets.js`.
+* **Techniques & Libraries Used**: Global Event Listeners, Framer Motion Modal Transitions, Vercel/Netlify/Render Configuration Specs, Blob File Download API, Quick Sort Partition Algorithm.
+* **Files Modified / Created**:
+  * [vercel.json](file:///c:/Users/abhin/OneDrive/Desktop/nodejs%20visulization/vercel.json)
+  * [frontend/public/_redirects](file:///c:/Users/abhin/OneDrive/Desktop/nodejs%20visulization/frontend/public/_redirects)
+  * [backend/render.yaml](file:///c:/Users/abhin/OneDrive/Desktop/nodejs%20visulization/backend/render.yaml)
+  * [frontend/src/components/common/KeyboardShortcutsModal.jsx](file:///c:/Users/abhin/OneDrive/Desktop/nodejs%20visulization/frontend/src/components/common/KeyboardShortcutsModal.jsx)
+  * [frontend/src/components/common/ExportModal.jsx](file:///c:/Users/abhin/OneDrive/Desktop/nodejs%20visulization/frontend/src/components/common/ExportModal.jsx)
+  * [frontend/src/components/common/OnboardingTourModal.jsx](file:///c:/Users/abhin/OneDrive/Desktop/nodejs%20visulization/frontend/src/components/common/OnboardingTourModal.jsx)
+  * [frontend/src/constants/algorithmPresets.js](file:///c:/Users/abhin/OneDrive/Desktop/nodejs%20visulization/frontend/src/constants/algorithmPresets.js)
+  * [frontend/src/components/layout/Header.jsx](file:///c:/Users/abhin/OneDrive/Desktop/nodejs%20visulization/frontend/src/components/layout/Header.jsx)
+* **Verification Result**: Verified `npm run build` compiled 2,783 modules cleanly in 9.22s with 0 errors.
+
+---
+
 ## 🚀 Future Implementation Roadmap & Execution Plan
 
 Below is the step-by-step breakdown of how upcoming phases will be built, detailing target components, techniques, and verification strategies.
@@ -357,6 +379,7 @@ Below is the step-by-step breakdown of how upcoming phases will be built, detail
 | **Step 10** | Main Industry-Standard README.md | ✅ **Completed** | 2026-09-05 |
 | **Phase 5** | Time & Space Complexity Engine (Recharts + KaTeX) | ✅ **Completed** | 2026-09-05 |
 | **Phase 6** | Backend Presets & Code Snippet Sharing API | ✅ **Completed** | 2026-09-05 |
+| **Step 13** | Cloud Deployments, Keyboard Shortcuts, Export & Tour | ✅ **Completed** | 2026-09-05 |
 
 ---
 

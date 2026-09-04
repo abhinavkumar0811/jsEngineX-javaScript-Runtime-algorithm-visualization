@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTrace, DEVELOPER_THEMES } from '../../context/TraceContext.jsx';
 import { ALGORITHM_PRESETS } from '../../constants/algorithmPresets.js';
 import JSEngineXLogo from '../common/JSEngineXLogo.jsx';
-import { PlayCircle, CheckCircle2, AlertTriangle, RefreshCw, Palette, Share2, Copy } from 'lucide-react';
+import KeyboardShortcutsModal from '../common/KeyboardShortcutsModal.jsx';
+import ExportModal from '../common/ExportModal.jsx';
+import OnboardingTourModal from '../common/OnboardingTourModal.jsx';
+import { PlayCircle, CheckCircle2, AlertTriangle, RefreshCw, Palette, Share2, Download, Keyboard, HelpCircle, Sparkles } from 'lucide-react';
 
 export default function Header() {
   const {
@@ -13,14 +16,64 @@ export default function Header() {
     changeTheme,
     isEvaluating,
     isPlaying,
+    setIsPlaying,
     traceError,
     traceSteps,
     currentStepIdx,
-    setCode
+    setCurrentStepIdx,
+    runCodeTrace
   } = useTrace();
 
   const [isSharing, setIsSharing] = useState(false);
   const [copiedLink, setCopiedLink] = useState(false);
+  const [showShortcuts, setShowShortcuts] = useState(false);
+  const [showExport, setShowExport] = useState(false);
+  const [showTour, setShowTour] = useState(false);
+
+  // Global Keyboard Shortcuts Event Listener
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      // Don't intercept if user is typing inside Monaco editor or inputs
+      const activeEl = document.activeElement;
+      const isInput = activeEl && (activeEl.tagName === 'INPUT' || activeEl.tagName === 'TEXTAREA' || activeEl.classList.contains('inputarea'));
+
+      if (isInput && !(e.ctrlKey || e.metaKey)) return;
+
+      if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+        e.preventDefault();
+        runCodeTrace(code);
+      } else if (e.key === ' ' || e.key === 'k' || e.key === 'K') {
+        if (!isInput) {
+          e.preventDefault();
+          setIsPlaying(!isPlaying);
+        }
+      } else if (e.key === 'ArrowRight' || e.key === 'l' || e.key === 'L') {
+        if (!isInput) {
+          e.preventDefault();
+          setCurrentStepIdx((prev) => Math.min(traceSteps.length - 1, prev + 1));
+        }
+      } else if (e.key === 'ArrowLeft' || e.key === 'j' || e.key === 'J') {
+        if (!isInput) {
+          e.preventDefault();
+          setCurrentStepIdx((prev) => Math.max(0, prev - 1));
+        }
+      } else if (e.key === 'r' || e.key === 'R') {
+        if (!isInput) {
+          e.preventDefault();
+          setCurrentStepIdx(0);
+          setIsPlaying(false);
+        }
+      } else if (e.key === '?') {
+        if (!isInput) {
+          e.preventDefault();
+          setShowShortcuts((prev) => !prev);
+        }
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [code, isPlaying, traceSteps.length]);
 
   const handleShareSnippet = async () => {
     setIsSharing(true);
@@ -45,7 +98,6 @@ export default function Header() {
       }
     } catch (err) {
       console.warn('Backend API share fallback:', err);
-      // Fallback local share URL using base64 encoding if backend offline
       const encoded = btoa(encodeURIComponent(code));
       const shareUrl = `${window.location.origin}/?code=${encoded}`;
       await navigator.clipboard.writeText(shareUrl);
@@ -137,6 +189,27 @@ export default function Header() {
           </select>
         </div>
 
+        {/* Export Button */}
+        <button
+          onClick={() => setShowExport(true)}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '6px',
+            padding: '6px 12px',
+            borderRadius: '8px',
+            border: '1px solid var(--border-color)',
+            background: 'var(--bg-glass)',
+            color: 'var(--text-primary)',
+            fontSize: '0.8rem',
+            fontWeight: 600,
+            cursor: 'pointer'
+          }}
+          title="Export source code or raw trace JSON"
+        >
+          <Download size={14} color="var(--accent-yellow)" /> Export
+        </button>
+
         {/* Share Snippet Button */}
         <button
           onClick={handleShareSnippet}
@@ -145,7 +218,7 @@ export default function Header() {
             display: 'flex',
             alignItems: 'center',
             gap: '6px',
-            padding: '6px 14px',
+            padding: '6px 12px',
             borderRadius: '8px',
             border: '1px solid var(--border-color)',
             background: copiedLink ? 'rgba(16, 185, 129, 0.2)' : 'var(--bg-glass)',
@@ -168,9 +241,54 @@ export default function Header() {
           )}
         </button>
 
+        {/* Keyboard Shortcuts Button */}
+        <button
+          onClick={() => setShowShortcuts(true)}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '6px 10px',
+            borderRadius: '8px',
+            border: '1px solid var(--border-color)',
+            background: 'var(--bg-glass)',
+            color: 'var(--text-secondary)',
+            cursor: 'pointer'
+          }}
+          title="Developer Keyboard Shortcuts (?)"
+        >
+          <Keyboard size={15} />
+        </button>
+
+        {/* Guided Tour Button */}
+        <button
+          onClick={() => setShowTour(true)}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '4px',
+            padding: '6px 10px',
+            borderRadius: '8px',
+            border: '1px solid var(--border-color)',
+            background: 'rgba(168, 85, 247, 0.12)',
+            color: 'var(--accent-purple)',
+            fontSize: '0.8rem',
+            fontWeight: 600,
+            cursor: 'pointer'
+          }}
+          title="Start JSEngineX Tour"
+        >
+          <Sparkles size={14} /> Tour
+        </button>
+
         {/* Status Indicator */}
         {getStatusBadge()}
       </div>
+
+      {/* Modals */}
+      <KeyboardShortcutsModal isOpen={showShortcuts} onClose={() => setShowShortcuts(false)} />
+      <ExportModal isOpen={showExport} onClose={() => setShowExport(false)} code={code} traceSteps={traceSteps} activePresetId={activePresetId} />
+      <OnboardingTourModal isOpen={showTour} onClose={() => setShowTour(false)} />
     </header>
   );
 }

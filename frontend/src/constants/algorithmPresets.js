@@ -51,6 +51,58 @@ let result = binarySearch(sortedArr, 23);
 console.log("Found target at index:", result);`
   },
   {
+    id: 'quick-sort',
+    name: 'Quick Sort (Divide & Conquer)',
+    category: 'Sorting',
+    code: `// Quick Sort Recursive Partition Algorithm
+function quickSort(arr) {
+  if (arr.length <= 1) {
+    return arr;
+  }
+  let pivot = arr[arr.length - 1];
+  let left = [];
+  let right = [];
+
+  for (let i = 0; i < arr.length - 1; i++) {
+    if (arr[i] < pivot) {
+      left.push(arr[i]);
+    } else {
+      right.push(arr[i]);
+    }
+  }
+  return [...quickSort(left), pivot, ...quickSort(right)];
+}
+
+let unsorted = [10, 7, 8, 9, 1, 5];
+let resultArr = quickSort(unsorted);
+console.log("Quick Sorted Result:", resultArr);`
+  },
+  {
+    id: 'linked-list',
+    name: 'Linked List Traversal',
+    category: 'Data Structures',
+    code: `// Singly Linked List Pointer Traversal
+class ListNode {
+  constructor(val, next = null) {
+    this.val = val;
+    this.next = next;
+  }
+}
+
+let node3 = new ListNode(30);
+let node2 = new ListNode(20, node3);
+let head = new ListNode(10, node2);
+
+let current = head;
+let values = [];
+while (current !== null) {
+  values.push(current.val);
+  current = current.next;
+}
+
+console.log("Linked List Traversed Nodes:", values);`
+  },
+  {
     id: 'factorial-recursion',
     name: 'Factorial (Recursion Stack)',
     category: 'Recursion',
