@@ -5,6 +5,7 @@ import StepControls from './StepControls.jsx';
 import MonacoEditorWrapper from '../ide/MonacoEditor.jsx';
 import ConsolePanel from '../ide/ConsolePanel.jsx';
 import JSInternalsTab from '../js-internals/JSInternalsTab.jsx';
+import DSAVisualizerTab from '../dsa/DSAVisualizerTab.jsx';
 import { Layers, Activity, GitBranch } from 'lucide-react';
 
 export default function IDELayout() {
@@ -60,12 +61,7 @@ export default function IDELayout() {
               {/* Main Tab Stage */}
               <div className="visualizer-stage-wrapper">
                 {activeMainTab === 'js-internals' && <JSInternalsTab />}
-                {activeMainTab === 'dsa' && (
-                  <div className="stage-placeholder">
-                    <h4><GitBranch size={18} /> DSA Visualizer Workspace</h4>
-                    <p>Phase 4 Data Structures & Algorithms visualizers will render here.</p>
-                  </div>
-                )}
+                {activeMainTab === 'dsa' && <DSAVisualizerTab />}
                 {activeMainTab === 'complexity' && (
                   <div className="stage-placeholder">
                     <h4><Activity size={18} /> Time & Space Complexity Engine</h4>

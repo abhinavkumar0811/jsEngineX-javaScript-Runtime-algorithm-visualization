@@ -371,8 +371,8 @@ body {
 .visualizer-stage-wrapper { flex: 1; overflow: hidden; display: flex; flex-direction: column; }
 .stage-placeholder { padding: 40px; text-align: center; color: var(--text-secondary); }
 
-/* JS Internals Styling */
-.js-internals-tab-container { display: flex; flex-direction: column; height: 100%; gap: 8px; padding: 8px; overflow: hidden; }
+/* JS Internals & DSA Styling */
+.js-internals-tab-container, .dsa-tab-container { display: flex; flex-direction: column; height: 100%; gap: 8px; padding: 8px; overflow: hidden; }
 .internals-subtabs { display: flex; gap: 6px; padding: 6px; }
 .subtab-btn { display: flex; align-items: center; gap: 6px; padding: 4px 10px; background: transparent; border: none; color: var(--text-secondary); font-size: 0.8rem; font-weight: 500; border-radius: var(--radius-sm); cursor: pointer; }
 .subtab-btn.active { background: var(--accent-primary); color: #fff; }
@@ -382,6 +382,33 @@ body {
 .card-header { display: flex; justify-content: space-between; align-items: center; }
 .card-title { display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 0.9rem; }
 .depth-badge, .count-badge { font-size: 0.75rem; color: var(--text-secondary); background: var(--bg-secondary); padding: 2px 8px; border-radius: 12px; border: 1px solid var(--border-color); }
+
+/* Array Visualizer Styling */
+.array-viz-stage { flex: 1; display: flex; flex-direction: column; gap: 16px; justify-content: flex-end; padding: 16px 12px; }
+.pointers-legend { display: flex; gap: 8px; flex-wrap: wrap; }
+.pointer-badge { font-size: 0.75rem; font-weight: 600; font-family: var(--font-code); padding: 2px 8px; border-radius: var(--radius-sm); background: var(--bg-secondary); border: 1px solid var(--border-color); color: var(--accent-cyan); }
+
+.bars-container { display: flex; align-items: flex-end; justify-content: center; gap: 12px; height: 220px; padding-bottom: 20px; border-bottom: 2px stroke var(--border-color); }
+.array-bar-item { width: 50px; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-sm) var(--radius-sm) 0 0; display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 6px 0; position: relative; transition: all 0.2s ease; }
+.array-bar-item.state-swapping { background: rgba(16, 185, 129, 0.25); border-color: var(--accent-emerald); box-shadow: 0 0 16px rgba(16, 185, 129, 0.4); }
+.array-bar-item.state-comparing { background: rgba(245, 158, 11, 0.25); border-color: var(--accent-amber); box-shadow: 0 0 16px rgba(245, 158, 11, 0.4); }
+.array-bar-item.state-active { background: rgba(6, 182, 212, 0.25); border-color: var(--accent-cyan); box-shadow: 0 0 16px rgba(6, 182, 212, 0.4); }
+
+.bar-value { font-family: var(--font-code); font-weight: 700; font-size: 0.95rem; color: var(--text-primary); }
+.bar-index { font-family: var(--font-code); font-size: 0.75rem; color: var(--text-muted); margin-top: auto; }
+.pointer-arrow-group { position: absolute; top: -26px; display: flex; flex-direction: column; align-items: center; font-size: 0.7rem; font-family: var(--font-code); color: var(--accent-cyan); font-weight: 700; }
+
+/* Tree Node Flow */
+.tree-node-content { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; }
+
+/* Recursion Tree Styling */
+.recursion-tree-stage { flex: 1; padding: 12px; overflow-y: auto; }
+.recursion-nodes-list { display: flex; flex-direction: column; gap: 8px; }
+.recursion-node-card { background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 10px; border-left: 3px solid var(--accent-amber); display: flex; flex-direction: column; gap: 4px; }
+.rec-node-header { display: flex; align-items: center; gap: 8px; font-family: var(--font-code); font-weight: 600; font-size: 0.85rem; }
+.rec-func-name { color: var(--accent-cyan); }
+.rec-depth-tag { font-size: 0.7rem; color: var(--text-muted); margin-left: auto; }
+.rec-scope-params { font-size: 0.75rem; color: var(--text-secondary); }
 
 /* Call Stack Styling */
 .call-stack-container { display: flex; flex-direction: column; gap: 8px; flex: 1; justify-content: flex-end; padding: 8px; }
