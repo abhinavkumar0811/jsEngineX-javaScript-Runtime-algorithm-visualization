@@ -198,6 +198,23 @@ For every new feature, refactoring, or phase completion, a log entry must be app
 
 ---
 
+### [Timestamp: 2026-09-05 01:27:00 IST] STEP-09: Comprehensive GitIgnore Configuration
+* **What Was Implemented**:
+  * Configured root `.gitignore` to strictly exclude non-sharable, local, build, and sensitive files:
+    1. Dependencies (`node_modules/`, `**/node_modules/`)
+    2. Production Bundles (`dist/`, `**/dist/`, `build/`, `out/`, `.vite/`)
+    3. Environment Secrets (`.env`, `.env.*`, `backend/.env`)
+    4. Logs & Debug Scratch (`*.log`, `npm-debug.log*`, `test_ast.js`)
+    5. OS & IDE System Files (`.DS_Store`, `Thumbs.db`, `.vscode/`, `.idea/`)
+  * Verified working tree clean state (`git status`).
+* **Techniques & Libraries Used**: GitIgnore Glob Patterns, Repository Hygiene, Security & Secret Exclusion.
+* **Files Modified / Created**:
+  * [.gitignore](file:///c:/Users/abhin/OneDrive/Desktop/nodejs%20visulization/.gitignore)
+* **Git Commit Hash**: `2e1767e` ("chore: update .gitignore with comprehensive rules for node_modules, build outputs, and environment files")
+* **Verification Result**: Verified `git status` output confirms clean working tree with 0 un-ignored temporary files.
+
+---
+
 ## 🚀 Future Implementation Roadmap & Execution Plan
 
 Below is the step-by-step breakdown of how upcoming phases will be built, detailing target components, techniques, and verification strategies.
