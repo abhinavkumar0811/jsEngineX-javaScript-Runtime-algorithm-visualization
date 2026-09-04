@@ -1,19 +1,46 @@
-# Dependencies
+# ==========================================
+# JSEngineX — Git Ignore Configuration
+# ==========================================
+
+# 1. Dependency Directories (Do NOT commit node_modules)
 node_modules/
 **/node_modules/
+frontend/node_modules/
+backend/node_modules/
 
-# Build outputs
+# 2. Build & Production Bundles
 dist/
 **/dist/
 build/
+out/
+.vite/
 
-# Environment & local files
+# 3. Environment Variables & Secret Files
 .env
-.env.local
-*.log
-test_ast.js
+.env.*
+!.env.example
+*.env
+backend/.env
 
-# IDE & OS
+# 4. Debug Logs & Temporary Scratch Files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+test_ast.js
+*.tmp
+.system_generated/
+
+# 5. OS & IDE System Files
 .DS_Store
 Thumbs.db
 .vscode/
+.idea/
+*.swp
+*.swo
+
+# 6. Test Coverage & Cache
+coverage/
+.cache/
+.eslintcache
