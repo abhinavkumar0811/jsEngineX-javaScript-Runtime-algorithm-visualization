@@ -101,6 +101,28 @@ For every new feature, refactoring, or phase completion, a log entry must be app
 
 ---
 
+### [Timestamp: 2026-09-05 01:08:00 IST] STEP-04: Phase 3 JS Runtime Internals & Heap Memory Graph
+* **What Was Implemented**:
+  * Built `CallStack.jsx` with `framer-motion` spring-physics LIFO stack frame push/pop animations & frame depth badges.
+  * Built `ScopeChain.jsx` inspecting local, closure, and global scope variable primitive/object bindings with type tags.
+  * Built `HeapGraph.jsx` using React Flow (`@xyflow/react`) to render interactive memory object nodes and reference pointer arrows.
+  * Built `EventLoop.jsx` featuring SVG animated circular phase rotator and live queue badges (Call Stack, Task Queue, Microtask Queue).
+  * Built `ErrorUnwinder.jsx` stack unwinding lifecycle diagram for runtime error handling.
+  * Built `JSInternalsTab.jsx` tabbed sub-navigation container and mounted inside `IDELayout.jsx`.
+* **Techniques & Libraries Used**: React Flow (`@xyflow/react`), Framer Motion (`AnimatePresence`, `motion.div`), SVG Circular Canvas Animations, Tabbed Workspace Navigation.
+* **Files Modified / Created**:
+  * [frontend/src/components/js-internals/CallStack.jsx](file:///c:/Users/abhin/OneDrive/Desktop/nodejs%20visulization/frontend/src/components/js-internals/CallStack.jsx)
+  * [frontend/src/components/js-internals/ScopeChain.jsx](file:///c:/Users/abhin/OneDrive/Desktop/nodejs%20visulization/frontend/src/components/js-internals/ScopeChain.jsx)
+  * [frontend/src/components/js-internals/HeapGraph.jsx](file:///c:/Users/abhin/OneDrive/Desktop/nodejs%20visulization/frontend/src/components/js-internals/HeapGraph.jsx)
+  * [frontend/src/components/js-internals/EventLoop.jsx](file:///c:/Users/abhin/OneDrive/Desktop/nodejs%20visulization/frontend/src/components/js-internals/EventLoop.jsx)
+  * [frontend/src/components/js-internals/ErrorUnwinder.jsx](file:///c:/Users/abhin/OneDrive/Desktop/nodejs%20visulization/frontend/src/components/js-internals/ErrorUnwinder.jsx)
+  * [frontend/src/components/js-internals/JSInternalsTab.jsx](file:///c:/Users/abhin/OneDrive/Desktop/nodejs%20visulization/frontend/src/components/js-internals/JSInternalsTab.jsx)
+  * [frontend/src/components/layout/IDELayout.jsx](file:///c:/Users/abhin/OneDrive/Desktop/nodejs%20visulization/frontend/src/components/layout/IDELayout.jsx)
+  * [frontend/src/styles/variables.css](file:///c:/Users/abhin/OneDrive/Desktop/nodejs%20visulization/frontend/src/styles/variables.css)
+* **Verification Result**: `vite build` compiled 2179 modules cleanly in 13.17s; all runtime visualizer components verified.
+
+---
+
 ## 🚀 Future Implementation Roadmap & Execution Plan
 
 Below is the step-by-step breakdown of how upcoming phases will be built, detailing target components, techniques, and verification strategies.
@@ -179,8 +201,8 @@ Below is the step-by-step breakdown of how upcoming phases will be built, detail
 | **Step 1** | Modular Folder Setup & Directory READMEs | ✅ **Completed** | 2026-09-05 |
 | **Phase 1** | Web Worker AST Parsing & Trace Engine | ✅ **Completed** | 2026-09-05 |
 | **Phase 2** | IDE Shell & Step Playback Scrubber | ✅ **Completed** | 2026-09-05 |
-| **Phase 3** | JS Runtime Internals & Heap Memory Graph | ⏳ *Pending* | Next Step |
-| **Phase 4** | DSA Visualizers & Recursion Tree | ⏳ *Pending* | Upcoming |
+| **Phase 3** | JS Runtime Internals & Heap Memory Graph | ✅ **Completed** | 2026-09-05 |
+| **Phase 4** | DSA Visualizers & Recursion Tree | ⏳ *Pending* | Next Step |
 | **Phase 5** | Time & Space Complexity Engine (Recharts + KaTeX) | ⏳ *Pending* | Upcoming |
 | **Phase 6** | Backend Presets & Code Snippet Sharing API | ⏳ *Pending* | Upcoming |
 

@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { PanelGroup, Panel, PanelResizeHandle } from 'react-resizable-panels';
 import Header from './Header.jsx';
 import StepControls from './StepControls.jsx';
 import MonacoEditorWrapper from '../ide/MonacoEditor.jsx';
 import ConsolePanel from '../ide/ConsolePanel.jsx';
-import { useTrace } from '../../context/TraceContext.jsx';
-import { Layers, Activity, Database, GitBranch } from 'lucide-react';
+import JSInternalsTab from '../js-internals/JSInternalsTab.jsx';
+import { Layers, Activity, GitBranch } from 'lucide-react';
 
 export default function IDELayout() {
-  const { activeStep } = useTrace();
+  const [activeMainTab, setActiveMainTab] = useState('js-internals');
 
   return (
     <div className="ide-shell-container">
@@ -33,58 +33,45 @@ export default function IDELayout() {
 
           <PanelResizeHandle className="resize-handle-horizontal" />
 
-          {/* Right Column: Visualization & Engine Panel */}
+          {/* Right Column: Visualization Workspace */}
           <Panel defaultSize={55} minSize={35}>
             <div className="visualizer-workspace glass-panel">
               <div className="workspace-tabs-header">
-                <button className="tab-btn active">
+                <button
+                  className={`tab-btn ${activeMainTab === 'js-internals' ? 'active' : ''}`}
+                  onClick={() => setActiveMainTab('js-internals')}
+                >
                   <Layers size={14} /> JS Internals
                 </button>
-                <button className="tab-btn">
+                <button
+                  className={`tab-btn ${activeMainTab === 'dsa' ? 'active' : ''}`}
+                  onClick={() => setActiveMainTab('dsa')}
+                >
                   <GitBranch size={14} /> DSA Visualizer
                 </button>
-                <button className="tab-btn">
+                <button
+                  className={`tab-btn ${activeMainTab === 'complexity' ? 'active' : ''}`}
+                  onClick={() => setActiveMainTab('complexity')}
+                >
                   <Activity size={14} /> Big-O Complexity
                 </button>
               </div>
 
-              {/* Visualization Placeholder Preview */}
-              <div className="visualizer-stage">
-                <div className="stage-card">
-                  <h4><Database size={16} /> Active Execution Frame</h4>
-                  {activeStep ? (
-                    <div className="frame-details-grid">
-                      <div className="detail-item">
-                        <span className="label">Step Number:</span>
-                        <span className="value">#{activeStep.step}</span>
-                      </div>
-                      <div className="detail-item">
-                        <span className="label">Line Execution:</span>
-                        <span className="value highlight">Line {activeStep.line} (Col {activeStep.column})</span>
-                      </div>
-                      <div className="detail-item">
-                        <span className="label">Action Type:</span>
-                        <span className="value">{activeStep.action}</span>
-                      </div>
-                      <div className="detail-item">
-                        <span className="label">Operations Count:</span>
-                        <span className="value">{activeStep.opCount} ops</span>
-                      </div>
-
-                      <div className="detail-section">
-                        <span className="label">Scope Variables Snapshot:</span>
-                        <pre className="json-block">{JSON.stringify(activeStep.scope, null, 2)}</pre>
-                      </div>
-
-                      <div className="detail-section">
-                        <span className="label">Call Stack Frame Depth:</span>
-                        <pre className="json-block">{JSON.stringify(activeStep.stack, null, 2)}</pre>
-                      </div>
-                    </div>
-                  ) : (
-                    <div className="stage-empty">No active trace step selected.</div>
-                  )}
-                </div>
+              {/* Main Tab Stage */}
+              <div className="visualizer-stage-wrapper">
+                {activeMainTab === 'js-internals' && <JSInternalsTab />}
+                {activeMainTab === 'dsa' && (
+                  <div className="stage-placeholder">
+                    <h4><GitBranch size={18} /> DSA Visualizer Workspace</h4>
+                    <p>Phase 4 Data Structures & Algorithms visualizers will render here.</p>
+                  </div>
+                )}
+                {activeMainTab === 'complexity' && (
+                  <div className="stage-placeholder">
+                    <h4><Activity size={18} /> Time & Space Complexity Engine</h4>
+                    <p>Phase 5 Recharts Big-O growth curves and KaTeX mathematical proofs will render here.</p>
+                  </div>
+                )}
               </div>
             </div>
           </Panel>
