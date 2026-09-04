@@ -193,6 +193,7 @@ For every new feature, refactoring, or phase completion, a log entry must be app
   * [frontend/src/components/dsa/DSAVisualizerTab.jsx](file:///c:/Users/abhin/OneDrive/Desktop/nodejs%20visulization/frontend/src/components/dsa/DSAVisualizerTab.jsx)
   * [frontend/src/components/layout/IDELayout.jsx](file:///c:/Users/abhin/OneDrive/Desktop/nodejs%20visulization/frontend/src/components/layout/IDELayout.jsx)
   * [frontend/src/styles/variables.css](file:///c:/Users/abhin/OneDrive/Desktop/nodejs%20visulization/frontend/src/styles/variables.css)
+* **Git Commit Hash**: `564978a` ("feat: complete Phase 4 - DSA visualizers, Framer Motion array bar swaps, React Flow tree traversals, and recursion tree")
 * **Verification Result**: `vite build` compiled 2184 modules cleanly in 5.14s; verified array bar swaps and graph nodes.
 
 ---
